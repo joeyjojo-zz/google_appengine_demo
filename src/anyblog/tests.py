@@ -8,14 +8,6 @@ Replace this with more appropriate tests for your application.
 from django.test import TestCase
 import anyblog.models as model
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
-
-
 class ModelTest(TestCase):
     def setUp(self):
         model.BlogPost(title="Test Title",
@@ -23,7 +15,7 @@ class ModelTest(TestCase):
                        author="Joe Bloggs").save()
 
     def test_creation(self):
-        mo = model.objects.one()
+        mo = model.BlogPost.objects.all()[0]
         self.assertEqual(mo.title, "Test Title", "Creation test failed. Title property incorrect.")
         self.assertEqual(mo.content, "Some test content", "Creation test failed. Content property incorrect.")
         self.assertEqual(mo.author, "Joe Bloggs", "Creation test failed. Author property incorrect.")
