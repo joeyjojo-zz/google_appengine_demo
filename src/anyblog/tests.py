@@ -17,11 +17,13 @@ class SimpleTest(TestCase):
 
 
 class ModelTest(TestCase):
+    def setUp(self):
+        model.BlogPost(title="Test Title",
+                       content="Some test content",
+                       author="Joe Bloggs").save()
+
     def test_creation(self):
-        model = model.BlogPost(title="Test Title",
-                               content="Some test content",
-                               author="Joe Bloggs")
-        model.put()
-        self.assertEqual(model.title, "Test Title", "Creation test failed. Title property incorrect.")
-        self.assertEqual(model.content, "Some test content", "Creation test failed. Content property incorrect.")
-        self.assertEqual(model.author, "Joe Bloggs", "Creation test failed. Author property incorrect.")
+        mo = model.objects.one()
+        self.assertEqual(mo.title, "Test Title", "Creation test failed. Title property incorrect.")
+        self.assertEqual(mo.content, "Some test content", "Creation test failed. Content property incorrect.")
+        self.assertEqual(mo.author, "Joe Bloggs", "Creation test failed. Author property incorrect.")
