@@ -1,0 +1,17 @@
+.base-header {
+    padding: 0px;
+    margin: 0px;
+}
+
+.base-header-h1 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.base-header-logo {
+    float: left;
+}
+
+.base-content-wrapper {
+    clear: both;
+}
