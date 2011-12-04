@@ -2,24 +2,28 @@
 
 {% block content %}
     <div id="index_content" class="index-content">
+        <div class="index-blog-content">
         {% if latest_blog_list %}
-            <ul>
             {% for blog in latest_blog_list %}
-                {%  include "blogsnippet.html" %}
+                <div class="index-blog-post">
+                    {%  include "blogsnippet.html" %}
+                </div>
             {% endfor %}
-            </ul>
         {% else %}
             <p>No blogs are available.</p>
         {% endif %}
+        </div>
     </div>
     <div id="archive_content" class="archive-content">
         {% if archive_dict %}
             <ul>
             {% for year, monthlist in archive_dict.items %}
                 <li><a>{{ year }}</a></li>
+                <ul>
                 {% for month in monthlist %}
                     <li><a>{{ month }}</a></li>
                 {% endfor %}
+                </ul>
             {% endfor %}
             </ul>
         {% else %}
