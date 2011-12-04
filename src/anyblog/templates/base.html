@@ -1,0 +1,50 @@
+{% load i18n %}
+<html>
+  <head>
+    <title>{% block title %}{% endblock %} - AnyBlog</title>
+
+    {% block css %}
+    {% endblock %}
+
+    {% block preload_js %}
+    {% endblock %}
+
+    {% block extra-head %}{% endblock %}
+  </head>
+
+  <body>
+    <div id="header">
+      <img src="/anyblog/media/images/logo.png" alt="{%  trans "AnyBlog logo" %}">
+      <h1>{%  trans "AnyBlog" %}</h1>
+      <h3>{%  trans "The blog for anyone." %}</h3>
+    </div>
+
+    <div class="columns">
+      <div id="content" class="column">
+        {% block content-header %}
+          {% if error %}<div class="error">{{ error }}</div>{% endif %}
+          {% if info %}<div class="info">{{ info }}</div>{% endif %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="info">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endblock %}
+
+        {% block content %}{% endblock %}
+      </div>
+
+      <div id="sidebar" class="column">
+        {% block sidebar %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <div id="footer">
+      <p>{%  trans "Sample Google App Engine Application" %}</p>
+    </div>
+
+    {% block js %}
+    {% endblock %}
+  </body>
+</html>
