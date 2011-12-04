@@ -1,6 +1,7 @@
 .base-header {
     padding: 0px;
     margin: 0px;
+    color: red;
 }
 
 .base-header-h1 {
@@ -8,8 +9,17 @@
     margin: 0px;
 }
 
+.base-header-h3 {
+    padding: 0px;
+    margin: 0px;
+}
+
 .base-header-logo {
     float: left;
+}
+
+.base-header-wrapper{
+    bottom: 0px;
 }
 
 .base-content-wrapper {

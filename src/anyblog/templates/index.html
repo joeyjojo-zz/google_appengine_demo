@@ -1,13 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if latest_blog_list %}
-        <ul>
-        {% for blog in latest_blog_list %}
-            <li><a href="/blogs/{{ blog.id }}/">{{ blog.title }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No blogs are available.</p>
-    {% endif %}
+    <div id="index_content" class="index-content">
+        {% if latest_blog_list %}
+            <ul>
+            {% for blog in latest_blog_list %}
+                {%  include "blogsnippet.html" %}
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No blogs are available.</p>
+        {% endif %}
+    </div>
+    <div id="archive_content" class="archive-content">
+        {% if archive_dict %}
+            <ul>
+            {% for year, monthlist in archive_dict.items %}
+                <li><a>{{ year }}</a></li>
+                {% for month in monthlist %}
+                    <li><a>{{ month }}</a></li>
+                {% endfor %}
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No archives are available.</p>
+        {% endif %}
+    </div>
+
 {% endblock %}
+
+{%  block sidebar %}
+    <ul>
+        <li>Add</li>
+    </ul>
+{%  endblock %}
