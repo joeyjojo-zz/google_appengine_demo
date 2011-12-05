@@ -18,10 +18,10 @@
         {% if year_month_dict %}
             <ul>
             {% for year, monthlist in year_month_dict.items %}
-                <li><a>{{ year }}</a></li>
+                <li>{{ year }}</li>
                 <ul>
                 {% for month in monthlist %}
-                    <li><a>{{ month }}</a></li>
+                    <li><a href="/anyblog/{{ year }}/{{ month.id }}">{{ month.name }}</a></li>
                 {% endfor %}
                 </ul>
             {% endfor %}

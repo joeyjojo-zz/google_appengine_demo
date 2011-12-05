@@ -24,7 +24,7 @@ def index(request):
         dt = datetime.date(ym.year, ym.month, 1)
         if ym.year not in d:
             d[ym.year] = []
-        d[ym.year].append(dt.strftime('%B'))
+        d[ym.year].append({"id":ym.month, "name":dt.strftime('%B')})
     # send to the view
     return render_to_response('index.html', {'latest_blog_list': latest_blog_list,
                                              'year_month_dict': d})
