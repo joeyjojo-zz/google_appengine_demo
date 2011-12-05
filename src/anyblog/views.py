@@ -6,3 +6,7 @@ def index(request):
     latest_blog_list = models.BlogPost.objects.all().order_by('-timestampcreated')[:5]
     # TODO: Cut this down to the first 100 chars of post
     return render_to_response('index.html', {'latest_blog_list': latest_blog_list})
+
+def detail(request):
+    # TODO: make this right
+    return render_to_response('index.html')
