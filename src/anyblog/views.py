@@ -35,8 +35,8 @@ def detail(request, blogpost_id):
     @param blogpost_id: The id of the blog post to display
     @type blogpost_id: int
     """
-    # TODO: make this right
-    return render_to_response('index.html')
+    blog_list = [models.BlogPost.objects.get(id=blogpost_id),]
+    return render_to_response('detail.html', {'latest_blog_list':blog_list})
 
 def month_archive(request, year, month):
     """
@@ -47,4 +47,4 @@ def month_archive(request, year, month):
     @type month: int
     """
     # TODO: make this right
-    return render_to_response('index.html')
+    return render_to_response('detail.html')
