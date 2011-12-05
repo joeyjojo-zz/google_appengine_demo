@@ -26,6 +26,10 @@ def index(request):
     return render_to_response('index.html', {'latest_blog_list': latest_blog_list,
                                              'year_month_dict': d})
 
-def detail(request):
+def detail(request, blogpost_id):
+    # TODO: make this right
+    return render_to_response('index.html')
+
+def month_archive(request, year, month):
     # TODO: make this right
     return render_to_response('index.html')
