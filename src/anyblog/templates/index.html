@@ -15,12 +15,12 @@
         </div>
     </div>
     <div id="archive_content" class="archive-content">
-        {% if year_month_list %}
+        {% if year_month_dict %}
             <ul>
-            {% for year in year_month_list %}
-                <li><a>{{ year.0 }}</a></li>
+            {% for year, monthlist in year_month_dict.items %}
+                <li><a>{{ year }}</a></li>
                 <ul>
-                {% for month in year.1 %}
+                {% for month in monthlist %}
                     <li><a>{{ month }}</a></li>
                 {% endfor %}
                 </ul>

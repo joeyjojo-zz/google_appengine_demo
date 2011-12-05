@@ -22,6 +22,7 @@ class BlogPost(models.Model):
             except ObjectDoesNotExist as e:
                 ymo = ArchiveYearMonth(year=self.timestampcreated.year,
                                        month=self.timestampcreated.month)
+                ymo.save()
                 self.yearmonth = ymo
 
     def __unicode__(self):
