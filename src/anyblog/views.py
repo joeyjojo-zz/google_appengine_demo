@@ -2,6 +2,7 @@
 import collections
 import logging
 import datetime
+import calendar
 
 from django.shortcuts import render_to_response
 
@@ -46,5 +47,11 @@ def month_archive(request, year, month):
     @param month: The month of the blog posts to display
     @type month: int
     """
-    # TODO: make this right
-    return render_to_response('detail.html')
+    year = int(year)
+    month = int(month)
+    minday, maxday = calendar.monthrange(year, month)
+    mintimestamp = datetime.datetime(year, month, minday)
+    maxtimestamp = datetime.datetime(year, month, maxday)
+    blog_list = models.BlogPost.objects.all().filter(timestampcreated__gt=mintimestamp)\
+                                             .filter(timestampcreated__lt=maxtimestamp)
+    return render_to_response('detail.html', {'latest_blog_list':blog_list})
