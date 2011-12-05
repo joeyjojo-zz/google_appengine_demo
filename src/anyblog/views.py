@@ -31,7 +31,7 @@ def index(request):
 
 def detail(request, blogpost_id):
     """
-    Returns the template for an idividual blog post
+    Returns the template for an individual blog post
     @param blogpost_id: The id of the blog post to display
     @type blogpost_id: int
     """
