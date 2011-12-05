@@ -1,0 +1,12 @@
+<h1>{{ blog.title }}</h1>
+<p>{{ blog.content }}</p>
+<ul>
+    <li><a href="/admin/anyblog/blogpost/{{ blog.id }}">Edit</a></li>
+    <li><a href="/admin/anyblog/blogpost/{{ blog.id }}/delete">Delete</a></li>
+</ul>
+<p>{{ blog.author }}</p>
+<p>{{ blog.timestampcreated }}</p>
+
+{% if blog.timestampcreated != blog.timestampmodified %}
+    <p>Last edited on {{ blog.timestampmodified }}</p>
+{% endif %}
