@@ -26,12 +26,9 @@ class BlogPost(models.Model):
                 self.yearmonth = ymo
 
     def __unicode__(self):
-        return u"<BlogPost (title={0}, content={1}, author={2}, created={3}, modified={4})>".format(
+        return u"{0}: {1}...".format(
             self.title,
-            self.content,
-            self.author,
-            self.timestampcreated,
-            self.timestampmodified
+            self.content[:20],
         )
 
 
