@@ -3,9 +3,11 @@ import collections
 import logging
 import datetime
 import calendar
+from django.http import HttpResponse
 
 from django.shortcuts import render_to_response
 from django.utils import simplejson
+from django.core import serializers
 
 import models
 
@@ -65,15 +67,7 @@ def get_next_results(request, num_to_retrieve, current_index):
         current_index = int(current_index)
         num_to_retrieve = int(num_to_retrieve)
         latest_blog_list = models.BlogPost.objects.all().order_by('-timestampcreated')[current_index:current_index+num_to_retrieve]
-        latest_blog_list_safe = [dict(blogpost) for blogpost in latest_blog_list]
-        json = simplejson.dumps(latest_blog_list_safe, ensure_ascii=False, cls=LazyEncoder)
-        return render_to_response(json, mimetype='application/json')
+        json_serializer = serializers.get_serializer("json")()
+        json = json_serializer.serialize(latest_blog_list, ensure_ascii=False)
+        return HttpResponse(json, mimetype='application/json')
 
-from django.utils.functional import Promise
-from django.utils.encoding import force_unicode
-
-class LazyEncoder(simplejson.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, Promise):
-            return force_unicode(obj)
-        return super(LazyEncoder, self).default(obj)
