@@ -5,6 +5,7 @@ import datetime
 import calendar
 
 from django.shortcuts import render_to_response
+from django.utils import simplejson
 
 import models
 
@@ -55,3 +56,14 @@ def month_archive(request, year, month):
     blog_list = models.BlogPost.objects.all().filter(timestampcreated__gt=mintimestamp)\
                                              .filter(timestampcreated__lt=maxtimestamp)
     return render_to_response('detail.html', {'latest_blog_list':blog_list})
+
+def get_next_results(request, num_to_retrieve, current_index):
+    """
+    Returns the next 5 blog posts as a json object
+    """
+    if request.is_ajax():
+        current_index = int(current_index)
+        num_to_retrieve = int(num_to_retrieve)
+        latest_blog_list = models.BlogPost.objects.all().order_by('-timestampcreated')[current_index:current_index+5]
+        json  = simplejson.dumps(latest_blog_list, ensure_ascii=False)
+        return render_to_response(json, mimetype='application/json')
