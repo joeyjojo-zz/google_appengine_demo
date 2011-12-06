@@ -64,6 +64,16 @@ def get_next_results(request, num_to_retrieve, current_index):
     if request.is_ajax():
         current_index = int(current_index)
         num_to_retrieve = int(num_to_retrieve)
-        latest_blog_list = models.BlogPost.objects.all().order_by('-timestampcreated')[current_index:current_index+5]
-        json  = simplejson.dumps(latest_blog_list, ensure_ascii=False)
+        latest_blog_list = models.BlogPost.objects.all().order_by('-timestampcreated')[current_index:current_index+num_to_retrieve]
+        latest_blog_list_safe = [dict(blogpost) for blogpost in latest_blog_list]
+        json = simplejson.dumps(latest_blog_list_safe, ensure_ascii=False, cls=LazyEncoder)
         return render_to_response(json, mimetype='application/json')
+
+from django.utils.functional import Promise
+from django.utils.encoding import force_unicode
+
+class LazyEncoder(simplejson.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Promise):
+            return force_unicode(obj)
+        return super(LazyEncoder, self).default(obj)
