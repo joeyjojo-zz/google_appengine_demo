@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}Index{% endblock %}
+
 {%  block preload_js %}
 <script type="text/javascript">
     $(document).ready(function(){
@@ -31,12 +33,12 @@
     </div>
     <div id="archive_content" class="archive-content">
         {% if year_month_dict %}
-            <ul>
+            <ul class="ui-menu ui-widget ui-widget-content ui-corner-all">
             {% for year, monthlist in year_month_dict.items %}
-                <li>{{ year }}</li>
-                <ul>
+                <li class="ui-menu-item">{{ year }}</li>
+                <ul class="ui-menu ui-widget ui-widget-content ui-corner-all">
                 {% for month in monthlist %}
-                    <li><a href="/anyblog/{{ year }}/{{ month.id }}">{{ month.name }}</a></li>
+                    <li class="ui-menu-item"><a href="/anyblog/{{ year }}/{{ month.id }}">{{ month.name }}</a></li>
                 {% endfor %}
                 </ul>
             {% endfor %}
@@ -49,7 +51,7 @@
 {% endblock %}
 
 {%  block sidebar %}
-    <ul>
-        <li><a href="/admin/anyblog/blogpost/add/">Add</a></li>
+    <ul class="ui-menu ui-widget ui-widget-content ui-corner-all">
+        <li class="ui-menu-item"><a href="/admin/anyblog/blogpost/add/">Add</a></li>
     </ul>
 {%  endblock %}

@@ -1,9 +1,9 @@
 <h1>{{ blog.title }}</h1>
 <p>{{ blog.content }}</p>
-<ul>
-    <li><a href="/anyblog/{{ blog.id }}">View</a></li>
-    <li><a href="/admin/anyblog/blogpost/{{ blog.id }}">Edit</a></li>
-    <li><a href="/admin/anyblog/blogpost/{{ blog.id }}/delete">Delete</a></li>
+<ul class="ui-menu ui-widget ui-widget-content ui-corner-all">
+    <li class="ui-menu-item"><a href="/anyblog/{{ blog.id }}">View</a></li>
+    <li class="ui-menu-item"><a href="/admin/anyblog/blogpost/{{ blog.id }}">Edit</a></li>
+    <li class="ui-menu-item"><a href="/admin/anyblog/blogpost/{{ blog.id }}/delete">Delete</a></li>
 </ul>
 <p>{{ blog.author }}</p>
 <p>{{ blog.timestampcreated }}</p>
