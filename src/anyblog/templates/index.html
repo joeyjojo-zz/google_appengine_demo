@@ -6,7 +6,7 @@
         AnyBlog.setCurrentIndex({{ latest_blog_list|length }});
         $("#viewNext5Link").click(function(event){
             event.preventDefault();
-            AnyBlog.handleGetMorePostsClick(5);
+            AnyBlog.handleGetMorePostsClick(5, $("#index_blog_content"));
         });
     });
 </script>
@@ -14,7 +14,7 @@
 
 {% block content %}
     <div id="index_content" class="index-content">
-        <div class="index-blog-content">
+        <div id="index_blog_content" class="index-blog-content">
         {% if latest_blog_list %}
             {% for blog in latest_blog_list %}
                 <div class="index-blog-post">
