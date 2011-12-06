@@ -1,7 +1,7 @@
 var AnyBlog;
 
 AnyBlog = (function() {
-    var handleGetMorePostsClick, getNextPostsData;
+    var handleGetMorePostsClick, getNextPostsData, setCurrentIndex;
     var currIndex = 0;
 
     /*
@@ -28,6 +28,10 @@ AnyBlog = (function() {
             });
     };
 
+    setCurrentIndex = function(val){
+        currIndex = val;
+    };
+
     return {handleGetMorePostsClick:handleGetMorePostsClick,
-            currIndex:currIndex};
+            setCurrentIndex:setCurrentIndex};
 })();

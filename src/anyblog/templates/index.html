@@ -3,7 +3,7 @@
 {%  block preload_js %}
 <script type="text/javascript">
     $(document).ready(function(){
-        AnyBlog.currIndex = {{ latest_blog_list|length }};
+        AnyBlog.setCurrentIndex({{ latest_blog_list|length }});
         $("#viewNext5Link").click(function(event){
             event.preventDefault();
             AnyBlog.handleGetMorePostsClick(5);
