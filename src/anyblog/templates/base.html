@@ -19,43 +19,39 @@
   </head>
 
   <body class="ui-widget">
-    <div id="header" class="base-header">
-      <h1 class="base-header-logo base-header-h1">
-          <a href="/anyblog">
-            <img src="/anyblog/media/images/logo.png" alt="{%  trans "AnyBlog logo" %}" width="114" height="91">
-          </a>
-      </h1>
-      <div class="base-header-wrapper">
-        <h1 class="base-header-h1">{%  trans "AnyBlog" %}</h1>
-        <h3 class="base-header-h3">{%  trans "The blog for anyone." %}</h3>
-      </div>
+    <div id="bodywrapper">
+        <div id="header" class="ui-widget-header">
+          <div class="">
+            <h1 class="">{%  trans "AnyBlog" %}</h1>
+            <h3 class="">{%  trans "The blog for anyone." %}</h3>
+          </div>
+        </div>
+
+        <div id="contentwrapper" class="ui-widget-header-content">
+          <div id="content" class="">
+            {% block content-header %}
+              <div id="error" class="">{{ error }}</div>
+              <div id="info" class="">{{ info }}</div>
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endblock %}
+
+            {% block content %}{% endblock %}
+          </div>
+
+        </div>
+
+        <div id="footer">
+          <p>{%  trans "Sample Google App Engine Application" %}</p>
+        </div>
     </div>
-
-    <div id="contentwrapper" class="base-content-wrapper">
-      <div id="content" class="column">
-        {% block content-header %}
-          <div id="error" class="error">{{ error }}</div>
-          <div id="info" class="info">{{ info }}</div>
-          {% if messages %}
-            {% for message in messages %}
-              <div class="info">{{ message }}</div>
-            {% endfor %}
-          {% endif %}
-        {% endblock %}
-
-        {% block content %}{% endblock %}
-      </div>
-
-      <div id="sidebar" class="column">
-        {% block sidebar %}
-        {% endblock %}
-      </div>
-    </div>
-
-    <div id="footer">
-      <p>{%  trans "Sample Google App Engine Application" %}</p>
-    </div>
-
+  <div id="sidebar" class="">
+    {% block sidebar %}
+    {% endblock %}
+  </div>
     {% block js %}
     {% endblock %}
   </body>

@@ -1,27 +1,21 @@
-.base-header {
-    padding: 0px;
-    margin: 0px;
-    color: red;
+body {
+	margin:10px 0px; padding:0px;
+	text-align:center;
+	}
+
+#bodywrapper {
+	width:75%;
+	margin:0px auto;
+	text-align:left;
+	padding:1em;
+	border:.1em dashed #333;
+	background-color:#eee;
 }
 
-.base-header-h1 {
-    padding: 0px;
-    margin: 0px;
+.blog-post-widget{
+    padding: .2em;
 }
 
-.base-header-h3 {
-    padding: 0px;
-    margin: 0px;
-}
-
-.base-header-logo {
-    float: left;
-}
-
-.base-header-wrapper{
-    bottom: 0px;
-}
-
-.base-content-wrapper {
-    clear: both;
+.blog-post-widget-content{
+    padding: .2em;
 }

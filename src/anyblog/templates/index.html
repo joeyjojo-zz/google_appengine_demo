@@ -10,6 +10,7 @@
             event.preventDefault();
             AnyBlog.handleGetMorePostsClick(5, $("#index_blog_content"));
         });
+        $(".blog-post-widget-content a").button();
     });
 </script>
 {% endblock %}
@@ -33,12 +34,12 @@
     </div>
     <div id="archive_content" class="archive-content">
         {% if year_month_dict %}
-            <ul class="ui-menu ui-widget ui-widget-content ui-corner-all">
+            <ul>
             {% for year, monthlist in year_month_dict.items %}
-                <li class="ui-menu-item">{{ year }}</li>
-                <ul class="ui-menu ui-widget ui-widget-content ui-corner-all">
+                <li>{{ year }}</li>
+                <ul>
                 {% for month in monthlist %}
-                    <li class="ui-menu-item"><a href="/anyblog/{{ year }}/{{ month.id }}">{{ month.name }}</a></li>
+                    <li><a href="/anyblog/{{ year }}/{{ month.id }}">{{ month.name }}</a></li>
                 {% endfor %}
                 </ul>
             {% endfor %}
@@ -51,7 +52,7 @@
 {% endblock %}
 
 {%  block sidebar %}
-    <ul class="ui-menu ui-widget ui-widget-content ui-corner-all">
-        <li class="ui-menu-item"><a href="/admin/anyblog/blogpost/add/">Add</a></li>
+    <ul>
+        <li><a href="/admin/anyblog/blogpost/add/">Add</a></li>
     </ul>
 {%  endblock %}
