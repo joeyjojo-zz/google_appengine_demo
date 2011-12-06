@@ -32,8 +32,8 @@
     <div id="contentwrapper" class="base-content-wrapper">
       <div id="content" class="column">
         {% block content-header %}
-          {% if error %}<div class="error">{{ error }}</div>{% endif %}
-          {% if info %}<div class="info">{{ info }}</div>{% endif %}
+          <div id="error" class="error">{{ error }}</div>
+          <div id="info" class="info">{{ info }}</div>
           {% if messages %}
             {% for message in messages %}
               <div class="info">{{ message }}</div>

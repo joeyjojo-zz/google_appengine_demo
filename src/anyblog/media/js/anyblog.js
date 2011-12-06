@@ -9,21 +9,24 @@ AnyBlog = (function() {
      * Add an error message to the page
      */
     addErrorMessage = function(msg) {
-
+        $("#error").append("<div class='error-message'>" + msg + "</div>");
     };
 
     /*
      * Add a loading message to the page
      */
-    addLoading = function(){
-        
+    addLoading = function(elem){
+        if (elem === undefined){
+            elem = $("#info");
+        };
+        elem.append("<div id='loading_message' class='loading-message'>Loading...</div>");
     };
 
     /*
      * Remove the loading page from the screen
      */
     removeLoading = function(){
-        
+        $("#loading_message").remove();
     };
 
 
@@ -44,7 +47,7 @@ AnyBlog = (function() {
      */
     handleGetMorePostsClick = function(num, elem) {
         // add loading symbol
-        addLoading();
+        addLoading(elem);
         // get the data
         $.when(getNextPostsData(num))
             .then(function(data) {
@@ -57,13 +60,13 @@ AnyBlog = (function() {
                 elem.append(l.join(""));
                 // clean up
                 setCurrentIndex(currIndex+data.length);
-                removeLoading();
+                removeLoading(elem);
             })
             .fail(function() {
                 // add error message
                 addErrorMessage("Failed to load blog posts.");
                 // clean up
-                removeLoading();
+                removeLoading(elem);
             });
     };
 
