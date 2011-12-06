@@ -62,11 +62,18 @@ def month_archive(request, year, month):
 def get_next_results(request, num_to_retrieve, current_index):
     """
     Returns the next 5 blog posts as a json object
+    @param num_to_retrieve: The number of blog posts to retrieve
+    @type num_to_retrieve: int
+    @param current_index: The index of the blog number to start the count to retrieve from when blogs are
+    ordered by date
+    @type current_index: int
     """
     if request.is_ajax():
+        # only allow ajax requests
         current_index = int(current_index)
         num_to_retrieve = int(num_to_retrieve)
         latest_blog_list = models.BlogPost.objects.all().order_by('-timestampcreated')[current_index:current_index+num_to_retrieve]
+        # convert to json
         json_serializer = serializers.get_serializer("json")()
         json = json_serializer.serialize(latest_blog_list, ensure_ascii=False)
         return HttpResponse(json, mimetype='application/json')
