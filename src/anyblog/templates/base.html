@@ -4,6 +4,8 @@
     <title>{% block title %}{% endblock %} - AnyBlog</title>
 
     <link rel="stylesheet" type="text/css" href="/anyblog/media/css/styles.css" media="all" />
+    <script type="text/javascript" src="/anyblog/media/js/lib/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="/anyblog/media/js/anyblog.js"></script>
 
     {% block css %}
     {% endblock %}
@@ -17,7 +19,7 @@
   <body>
     <div id="header" class="base-header">
       <h1 class="base-header-logo base-header-h1">
-          <a href="">
+          <a href="/anyblog">
             <img src="/anyblog/media/images/logo.png" alt="{%  trans "AnyBlog logo" %}" width="114" height="91">
           </a>
       </h1>
