@@ -93,6 +93,12 @@ AnyBlog = (function() {
         textArr.push("<p>");
         textArr.push(fields["content"]);
         textArr.push("</p>");
+        textArr.push("<p>");
+        textArr.push(fields["author"]);
+        textArr.push("</p>");
+        textArr.push("<p>");
+        textArr.push(fields["timestampcreated"]);
+        textArr.push("</p>");
         textArr.push("<a href='/anyblog/");
         textArr.push(blogpostdata["pk"]);
         textArr.push("'>View</a>");
@@ -102,12 +108,6 @@ AnyBlog = (function() {
         textArr.push("<a href='/admin/anyblog/blogpost/");
         textArr.push(blogpostdata["pk"]);
         textArr.push("/delete'>Delete</a>");
-        textArr.push("<p>");
-        textArr.push(fields["author"]);
-        textArr.push("</p>");
-        textArr.push("<p>");
-        textArr.push(fields["timestampcreated"]);
-        textArr.push("</p>");
         if (fields["timestampcreated"] !== fields["timestampmodified"]){
             textArr.push("<p>Last edited on ");
             textArr.push(fields["timestampmodified"]);
