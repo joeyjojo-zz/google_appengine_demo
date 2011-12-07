@@ -12,6 +12,20 @@ body {
 	background-color:#eee;
 }
 
+.content{
+    float: left;
+    width: 80%;
+}
+
+.sidebar {
+    float: right;
+    width: 20%;
+}
+
+.clearer {
+    clear: both;
+}
+
 .blog-post-widget{
     padding: .2em;
 }

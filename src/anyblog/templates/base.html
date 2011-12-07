@@ -28,7 +28,11 @@
         </div>
 
         <div id="contentwrapper" class="ui-widget-header-content">
-          <div id="content" class="">
+          <div id="sidebar" class="sidebar">
+            {% block sidebar %}
+            {% endblock %}
+          </div>
+          <div id="content" class="content ui-widget">
             {% block content-header %}
               <div id="error" class="">{{ error }}</div>
               <div id="info" class="">{{ info }}</div>
@@ -41,17 +45,13 @@
 
             {% block content %}{% endblock %}
           </div>
-
+          <div class="clearer"></div>
         </div>
 
-        <div id="footer">
-          <p>{%  trans "Sample Google App Engine Application" %}</p>
-        </div>
     </div>
-  <div id="sidebar" class="">
-    {% block sidebar %}
-    {% endblock %}
-  </div>
+    <div id="footer" class="footer">
+          <p>{%  trans "Sample Google App Engine Application" %}</p>
+    </div>
     {% block js %}
     {% endblock %}
   </body>

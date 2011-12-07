@@ -59,6 +59,7 @@ AnyBlog = (function() {
                 // insert the html
                 elem.append(l.join(""));
                 // clean up
+                $(".blog-post-widget-content a").button();
                 setCurrentIndex(currIndex+data.length);
                 removeLoading(elem);
             })
@@ -82,26 +83,25 @@ AnyBlog = (function() {
         // other keeps all templates generated on the server and doesn't lead to a mix of templating styles
         var textArr = []
         var fields = blogpostdata["fields"];
+        textArr.push("<div class='ui-widget blog-post-widget'>");
+        textArr.push("<div class='ui-widget-header'>");
         textArr.push("<h1>");
         textArr.push(fields["title"]);
         textArr.push("</h1>");
+        textArr.push("</div>");
+        textArr.push("<div class='ui-widget-content blog-post-widget-content'>");
         textArr.push("<p>");
         textArr.push(fields["content"]);
         textArr.push("</p>");
-        textArr.push("<ul>");
-        textArr.push("<li>");
         textArr.push("<a href='/anyblog/");
         textArr.push(blogpostdata["pk"]);
-        textArr.push("'>View</a></li>");
-        textArr.push("<li>");
+        textArr.push("'>View</a>");
         textArr.push("<a href='/admin/anyblog/blogpost/");
         textArr.push(blogpostdata["pk"]);
-        textArr.push("'>Edit</a></li>");
-        textArr.push("<li>");
+        textArr.push("'>Edit</a>");
         textArr.push("<a href='/admin/anyblog/blogpost/");
         textArr.push(blogpostdata["pk"]);
-        textArr.push("/delete'>Delete</a></li>");
-        textArr.push("</ul>");
+        textArr.push("/delete'>Delete</a>");
         textArr.push("<p>");
         textArr.push(fields["author"]);
         textArr.push("</p>");
@@ -113,6 +113,8 @@ AnyBlog = (function() {
             textArr.push(fields["timestampmodified"]);
             textArr.push("</p>");
         }
+        textArr.push("</div>");
+        textArr.push("</div>");
         return textArr.join("");
     };
 
