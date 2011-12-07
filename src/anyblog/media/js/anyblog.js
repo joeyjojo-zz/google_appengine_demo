@@ -108,11 +108,6 @@ AnyBlog = (function() {
         textArr.push("<a href='/admin/anyblog/blogpost/");
         textArr.push(blogpostdata["pk"]);
         textArr.push("/delete'>Delete</a>");
-        if (fields["timestampcreated"] !== fields["timestampmodified"]){
-            textArr.push("<p>Last edited on ");
-            textArr.push(fields["timestampmodified"]);
-            textArr.push("</p>");
-        }
         textArr.push("</div>");
         textArr.push("</div>");
         return textArr.join("");

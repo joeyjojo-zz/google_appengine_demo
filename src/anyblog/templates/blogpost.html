@@ -1,12 +1,16 @@
-<h1>{{ blog.title }}</h1>
-<p>{{ blog.content }}</p>
-<ul>
-    <li><a href="/admin/anyblog/blogpost/{{ blog.id }}">Edit</a></li>
-    <li><a href="/admin/anyblog/blogpost/{{ blog.id }}/delete">Delete</a></li>
-</ul>
-<p>{{ blog.author }}</p>
-<p>{{ blog.timestampcreated }}</p>
+<div class="ui-widget blog-post-widget">
+    <div class="ui-widget-header">
+        <h1>{{ blog.title }}</h1>
+    </div>
+    <div class="ui-widget-content blog-post-widget-content">
+        <p>{{ blog.content }}</p>
+        <p>Author: {{ blog.author }}</p>
+        <p>Date created: {{ blog.timestampcreated }}</p>
+        <a href="/admin/anyblog/blogpost/{{ blog.id }}">Edit</a>
+        <a href="/admin/anyblog/blogpost/{{ blog.id }}/delete">Delete</a>
 
-{% if blog.timestampcreated != blog.timestampmodified %}
-    <p>Last edited on {{ blog.timestampmodified }}</p>
-{% endif %}
+        {% if blog.timestampcreated != blog.timestampmodified %}
+            <p>Last edited on {{ blog.timestampmodified }}</p>
+        {% endif %}
+    </div>
+</div>
